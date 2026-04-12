@@ -8,12 +8,9 @@ const regenerateBtn = document.getElementById("regenerateBtn");
 const saveBtn = document.getElementById("saveBtn");
 const copyBtn = document.getElementById("copyBtn");
 const exportBtn = document.getElementById("exportBtn");
-const exportJsonBtn = document.getElementById("exportJsonBtn");
 const lessonTemplate = document.getElementById("lessonTemplate");
 const templateRefreshBtn = document.getElementById("templateRefreshBtn");
 const templateHint = document.getElementById("templateHint");
-const resetBtn = document.getElementById("resetBtn");
-const clearHistoryBtn = document.getElementById("clearHistoryBtn");
 const storageKey = "kindergarten-lessons";
 const kindergartenPromptKeywords = ["3-6岁", "生活化", "游戏化", "合作探究", "观察表达", "动手操作", "情绪情感", "社会交往", "审美体验"];
 const dailyInspirations = [
@@ -545,28 +542,10 @@ function getHistory() {
   }
 }
 
-function clearHistory() {
-  localStorage.removeItem(storageKey);
-  renderHistory();
-}
-
-function exportJson(result) {
-  const blob = new Blob([JSON.stringify(result, null, 2)], { type: "application/json;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `${result.title || "幼儿园教案"}.json`;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
 function setGeneratingState(isGenerating) {
   generateBtn.disabled = isGenerating;
   regenerateBtn.disabled = isGenerating;
   exportBtn.disabled = isGenerating;
-  exportJsonBtn.disabled = isGenerating;
   generateBtn.textContent = isGenerating ? "正在生成中…" : "一键生成教案";
 }
 

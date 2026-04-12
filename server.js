@@ -237,7 +237,7 @@ app.post("/api/preset-suggest", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`Kindergarten lesson generator is running at http://localhost:${port}`);
 });
 
