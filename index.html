@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>幼芽备课台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="float float-sun"></div>
+      <div class="float float-cloud"></div>
+      <div class="float float-flower"></div>
+
+      <header class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">给幼儿园老师的温柔备课工具</span>
+          <h1>幼芽备课台</h1>
+          <p class="hero-text">
+            输入年龄段、活动类型、教育目标和创意要求，一键生成贴合 3-6 岁幼儿发展特点的完整活动教案，帮助老师把时间留给真正重要的陪伴与引导。
+          </p>
+          <div class="hero-badges">
+            <span>适配一日活动</span>
+            <span>杜绝小学化</span>
+            <span>支持本地保存</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-head">
+            <span class="dot dot-peach"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="hero-card-body">
+            <p class="card-label">今日灵感</p>
+            <h2>春天小花园观察课</h2>
+            <ul>
+              <li>从真实生活经验出发</li>
+              <li>兼顾表达、操作与合作</li>
+              <li>语言温柔，步骤可直接上课</li>
+            </ul>
+          </div>
+        </aside>
+      </header>
+
+      <main class="main-grid">
+        <section class="panel form-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">输入区</p>
+              <h3>填写活动需求</h3>
+            </div>
+            <button id="resetBtn" class="ghost-btn" type="button">清空重置</button>
+          </div>
+
+          <form id="lessonForm" class="lesson-form">
+            <label class="field template-field">
+              <span>快捷模板</span>
+              <div class="template-control">
+                <select id="lessonTemplate">
+                  <option value="">从模板开始</option>
+                  <option value="春天观察课">春天观察课</option>
+                  <option value="生活习惯养成">生活习惯养成</option>
+                  <option value="绘本延伸活动">绘本延伸活动</option>
+                  <option value="户外探索游戏">户外探索游戏</option>
+                </select>
+                <button id="templateRefreshBtn" class="template-refresh-btn" type="button" aria-label="刷新幼儿园项目建议" title="刷新幼儿园项目建议">↻</button>
+              </div>
+              <p id="templateHint" class="field-hint">点击刷新可换一套更适合 3-6 岁幼儿园场景的项目配置。</p>
+            </label>
+
+            <label class="field">
+              <span>幼儿年龄段</span>
+              <select id="ageGroup" required>
+                <option value="">请选择年龄段</option>
+                <option value="小班（3-4岁）">小班（3-4岁）</option>
+                <option value="中班（4-5岁）">中班（4-5岁）</option>
+                <option value="大班（5-6岁）">大班（5-6岁）</option>
+                <option value="混龄班">混龄班</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>活动类型</span>
+              <select id="activityType" required>
+                <option value="">请选择活动类型</option>
+                <option value="语言活动">语言活动</option>
+                <option value="艺术活动">艺术活动</option>
+                <option value="科学探索">科学探索</option>
+                <option value="健康活动">健康活动</option>
+                <option value="社会活动">社会活动</option>
+                <option value="音乐律动">音乐律动</option>
+                <option value="户外游戏">户外游戏</option>
+                <option value="区域活动">区域活动</option>
+              </select>
+            </label>
+
+            <fieldset class="field fieldset">
+              <legend>教育目标</legend>
+              <div class="goal-grid">
+                <label><input type="checkbox" name="goal" value="认知发展" />认知发展</label>
+                <label><input type="checkbox" name="goal" value="语言表达" />语言表达</label>
+                <label><input type="checkbox" name="goal" value="动手操作" />动手操作</label>
+                <label><input type="checkbox" name="goal" value="情绪情感" />情绪情感</label>
+                <label><input type="checkbox" name="goal" value="社会交往" />社会交往</label>
+                <label><input type="checkbox" name="goal" value="审美创造" />审美创造</label>
+              </div>
+            </fieldset>
+
+            <label class="field">
+              <span>自定义目标</span>
+              <input id="customGoal" type="text" placeholder="例如：培养观察春天变化的兴趣" />
+            </label>
+
+            <label class="field">
+              <span>创意要求</span>
+              <textarea id="creativeRequirement" rows="5" placeholder="例如：希望融入绘本导入、角色扮演、小组协作，课堂氛围活泼温暖。"></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button id="generateBtn" class="primary-btn" type="submit">一键生成教案</button>
+              <button id="regenerateBtn" class="secondary-btn" type="button">重新生成</button>
+              <button id="saveBtn" class="secondary-btn" type="button">本地保存</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">输出区</p>
+              <h3>生成的活动教案</h3>
+            </div>
+            <div class="result-actions">
+              <button id="copyBtn" class="ghost-btn" type="button">一键复制</button>
+              <button id="exportBtn" class="ghost-btn" type="button">导出文本</button>
+              <button id="exportJsonBtn" class="ghost-btn" type="button">导出 JSON</button>
+            </div>
+          </div>
+
+          <div id="resultEmpty" class="empty-state">
+            <div class="empty-illustration"></div>
+            <h4>这里会长出一份可直接使用的教案</h4>
+            <p>先在左侧填写活动信息，再点击“一键生成教案”。</p>
+          </div>
+
+          <article id="resultCard" class="result-card hidden"></article>
+        </section>
+      </main>
+
+      <section class="history-panel panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">历史记录</p>
+            <h3>本地已保存教案</h3>
+          </div>
+          <button id="clearHistoryBtn" class="ghost-btn" type="button">清空历史</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </div>
+
+    <template id="historyItemTemplate">
+      <article class="history-item">
+        <button class="history-open" type="button">
+          <span class="history-title"></span>
+          <span class="history-meta"></span>
+          <span class="history-preview"></span>
+        </button>
+        <button class="history-delete" type="button">删除</button>
+      </article>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
