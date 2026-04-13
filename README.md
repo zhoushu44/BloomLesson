@@ -41,6 +41,11 @@ docker run -p 5089:5089 kindergarten-lesson-generator
 
 仓库已配置 GitHub Actions。向 `main` 或 `master` 分支 push 后，会自动构建并推送 Docker 镜像到 Docker Hub。
 
+当前镜像标签：
+
+- `latest`
+- `1.4`
+
 需要在 GitHub Secrets 中配置：
 
 - `DOCKER_HUB_USERNAME`

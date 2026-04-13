@@ -599,5 +599,14 @@ function exportText(result) {
   URL.revokeObjectURL(url);
 }
 
-updateTemplateHint();
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+updateTemplateHint("v1.4 已加载");
 init();

@@ -30,4 +30,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME }}/kindergarten-lesson-generator:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/kindergarten-lesson-generator:1.3
+            ${{ secrets.DOCKER_HUB_USERNAME }}/kindergarten-lesson-generator:1.4
