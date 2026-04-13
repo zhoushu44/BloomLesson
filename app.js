@@ -599,13 +599,5 @@ function exportText(result) {
   URL.revokeObjectURL(url);
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
 updateTemplateHint();
+init();
